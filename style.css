@@ -862,10 +862,17 @@ footer {
 }
 
 /* Responsive */
+/* Container du système solaire responsif */
+.system-intro {
+    position: relative;
+    overflow: hidden;
+    padding-bottom: 80px; /* Espace pour éviter que le contenu suivant chevauche */
+}
+
 @media (max-width: 1200px) {
     .solar-system-container {
-        transform: scale(0.7);
-        margin-bottom: -100px;
+        transform: scale(0.6);
+        height: 700px;
     }
     
     .planets-grid {
@@ -874,8 +881,21 @@ footer {
 }
 
 @media (max-width: 992px) {
+    .menu-toggle {
+        display: block;
+    }
+    
+    .desktop-nav {
+        display: none;
+    }
+    
+    .mobile-nav {
+        display: block;
+    }
+    
     header {
-        padding: 15px 30px;
+        padding: 15px 20px;
+        justify-content: space-between;
     }
     
     .title {
@@ -887,9 +907,8 @@ footer {
     }
     
     .solar-system-container {
-        transform: scale(0.5);
+        transform: scale(0.45);
         height: 600px;
-        margin-bottom: -150px;
     }
     
     .modal-content {
@@ -943,10 +962,22 @@ footer {
         flex-direction: column;
     }
     
+    /* Amélioration du système solaire pour les écrans moyens */
+    .system-intro {
+        height: auto;
+        min-height: 450px;
+    }
+    
     .solar-system-container {
-        transform: scale(0.4);
-        height: 500px;
-        margin-bottom: -200px;
+        transform: scale(0.35);
+        height: 450px;
+        position: relative;
+        top: -50px;
+    }
+    
+    /* Meilleure visibilité des orbites */
+    .orbit {
+        border: 1.5px solid rgba(255, 255, 255, 0.2);
     }
     
     .planet-image-large {
@@ -975,6 +1006,21 @@ footer {
     .cta-button {
         padding: 12px 25px;
     }
+}
+
+/* Amélioration des planètes et des orbites */
+.sun {
+    box-shadow: 0 0 50px #ff9500, 0 0 100px #ff5e00, 0 0 150px rgba(255, 149, 0, 0.3);
+    z-index: 20;
+}
+
+.orbit {
+    z-index: 5;
+}
+
+.planet {
+    z-index: 10;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
 }
 
 /* Petits écrans de téléphone */
@@ -1032,11 +1078,36 @@ footer {
         margin-bottom: 25px;
     }
     
-    .solar-system-container {
-        transform: scale(0.25);
-        height: 300px;
-        margin-bottom: -280px;
+    /* Optimisation du système solaire pour mobile */
+    .system-intro {
+        min-height: 350px;
+        height: auto;
+        padding-bottom: 0;
     }
+    
+    .solar-system-container {
+        transform: scale(0.3);
+        height: 350px;
+        transform-origin: center center;
+        position: relative;
+        top: -50px;
+    }
+    
+    /* Amélioration de la visibilité */
+    .sun {
+        width: 100px;
+        height: 100px;
+    }
+    
+    /* Planetes plus grandes pour meilleure visibilité sur mobile */
+    .mercury { width: 12px; height: 12px; }
+    .venus { width: 18px; height: 18px; }
+    .earth { width: 20px; height: 20px; }
+    .mars { width: 16px; height: 16px; }
+    .jupiter { width: 45px; height: 45px; }
+    .saturn { width: 40px; height: 40px; }
+    .uranus { width: 30px; height: 30px; }
+    .neptune { width: 30px; height: 30px; }
     
     /* Cartes de planètes */
     .planets-grid {
