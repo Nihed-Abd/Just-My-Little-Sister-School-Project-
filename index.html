@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notre Système Solaire</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="stars"></div>
+    <div class="twinkling"></div>
+    
+    <header>
+        <div class="logo">
+            <i class="fas fa-sun"></i>
+            <h1>Notre Système Solaire</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#systeme">Système Solaire</a></li>
+                <li><a href="#planetes">Planètes</a></li>
+                <li><a href="#equipe">Notre Équipe</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="accueil" class="hero">
+        <div class="hero-content">
+            <h1 class="title">Explorez Notre Système Solaire</h1>
+            <p class="subtitle">Un voyage interstellaire à travers les planètes et leurs secrets</p>
+            <a href="#systeme" class="cta-button">Commencer l'exploration</a>
+        </div>
+    </section>
+
+    <section id="systeme" class="system-intro">
+        <div class="container">
+            <h2 class="section-title">Le Système Solaire</h2>
+            <p class="section-description">
+                Le système solaire est composé du Soleil et de tout ce qui orbite autour de lui, y compris les planètes, 
+                les lunes, les astéroïdes, les comètes et autres corps célestes. Notre système solaire fait partie de la 
+                Voie lactée, une galaxie spirale qui contient des milliards d'étoiles.
+            </p>
+            <div class="solar-system-container">
+                <div class="sun"></div>
+                <div class="orbit mercury-orbit">
+                    <div class="planet mercury"></div>
+                </div>
+                <div class="orbit venus-orbit">
+                    <div class="planet venus"></div>
+                </div>
+                <div class="orbit earth-orbit">
+                    <div class="planet earth"></div>
+                </div>
+                <div class="orbit mars-orbit">
+                    <div class="planet mars"></div>
+                </div>
+                <div class="orbit jupiter-orbit">
+                    <div class="planet jupiter"></div>
+                </div>
+                <div class="orbit saturn-orbit">
+                    <div class="planet saturn">
+                        <div class="saturn-ring"></div>
+                    </div>
+                </div>
+                <div class="orbit uranus-orbit">
+                    <div class="planet uranus"></div>
+                </div>
+                <div class="orbit neptune-orbit">
+                    <div class="planet neptune"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="planetes" class="planets">
+        <div class="container">
+            <h2 class="section-title">Les Planètes</h2>
+            <div class="planets-grid">
+                <div class="planet-card" data-planet="mercure">
+                    <div class="planet-image">
+                        <img src="images/mercury.jpg" alt="Mercure">
+                    </div>
+                    <h3>Mercure</h3>
+                    <button class="details-btn">Voir détails</button>
+                </div>
+                
+                <div class="planet-card" data-planet="venus">
+                    <div class="planet-image">
+                        <img src="images/venus.jpg" alt="Vénus">
+                    </div>
+                    <h3>Vénus</h3>
+                    <button class="details-btn">Voir détails</button>
+                </div>
+                
+                <div class="planet-card" data-planet="terre">
+                    <div class="planet-image">
+                        <img src="images/earth.jpg" alt="Terre">
+                    </div>
+                    <h3>Terre</h3>
+                    <button class="details-btn">Voir détails</button>
+                </div>
+                
+                <div class="planet-card" data-planet="mars">
+                    <div class="planet-image">
+                        <img src="images/mars.jpg" alt="Mars">
+                    </div>
+                    <h3>Mars</h3>
+                    <button class="details-btn">Voir détails</button>
+                </div>
+                
+                <div class="planet-card" data-planet="jupiter">
+                    <div class="planet-image">
+                        <img src="images/jupiter.jpg" alt="Jupiter">
+                    </div>
+                    <h3>Jupiter</h3>
+                    <button class="details-btn">Voir détails</button>
+                </div>
+                
+                <div class="planet-card" data-planet="saturne">
+                    <div class="planet-image">
+                        <img src="images/saturn.jpg" alt="Saturne">
+                    </div>
+                    <h3>Saturne</h3>
+                    <button class="details-btn">Voir détails</button>
+                </div>
+                
+                <div class="planet-card" data-planet="uranus">
+                    <div class="planet-image">
+                        <img src="images/uranus.jpg" alt="Uranus">
+                    </div>
+                    <h3>Uranus</h3>
+                    <button class="details-btn">Voir détails</button>
+                </div>
+                
+                <div class="planet-card" data-planet="neptune">
+                    <div class="planet-image">
+                        <img src="images/neptune.jpg" alt="Neptune">
+                    </div>
+                    <h3>Neptune</h3>
+                    <button class="details-btn">Voir détails</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="planet-modal" id="planetModal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <div class="planet-details">
+                    <div class="planet-image-large">
+                        <img id="modalPlanetImage" src="" alt="">
+                    </div>
+                    <div class="planet-info">
+                        <h2 id="modalPlanetName"></h2>
+                        <div class="planet-stats">
+                            <div class="stat">
+                                <span class="stat-label">Diamètre:</span>
+                                <span id="modalPlanetDiameter" class="stat-value"></span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-label">Distance du Soleil:</span>
+                                <span id="modalPlanetDistance" class="stat-value"></span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-label">Période orbitale:</span>
+                                <span id="modalPlanetOrbit" class="stat-value"></span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-label">Température:</span>
+                                <span id="modalPlanetTemp" class="stat-value"></span>
+                            </div>
+                        </div>
+                        <p id="modalPlanetDesc" class="planet-description"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="equipe" class="team">
+        <div class="container">
+            <h2 class="section-title">Notre Équipe</h2>
+            <p class="team-intro">Ce projet a été développé avec amour par trois brillantes élèves passionnées par la science et l'astronomie.</p>
+            
+            <div class="team-members">
+                <div class="team-member">
+                    <div class="member-avatar">
+                        <i class="fas fa-user-astronaut"></i>
+                    </div>
+                    <h3>Neycen BenAbdennour</h3>
+                    <p class="member-role">Développeuse Web</p>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-avatar">
+                        <i class="fas fa-user-astronaut"></i>
+                    </div>
+                    <h3>Manar Ben Mansour</h3>
+                    <p class="member-role">Experte en Astronomie</p>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-avatar">
+                        <i class="fas fa-user-astronaut"></i>
+                    </div>
+                    <h3>Fatma Ezahra Ben Amira</h3>
+                    <p class="member-role">Designer Créative</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h3>Projet Scolaire de Sciences Physiques</h3>
+                    <p>Année 2025</p>
+                </div>
+                <div class="footer-credits">
+                    <p>Développé avec <i class="fas fa-heart"></i> par Neycen, Manar et Fatma Ezahra</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
