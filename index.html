@@ -6,6 +6,10 @@
     <title>Notre Système Solaire</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Three.js pour les animations 3D -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <!-- OrbitControls pour manipuler les objets 3D -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.min.js"></script>
 </head>
 <body>
     <div class="stars"></div>
@@ -42,34 +46,9 @@
                 les lunes, les astéroïdes, les comètes et autres corps célestes. Notre système solaire fait partie de la 
                 Voie lactée, une galaxie spirale qui contient des milliards d'étoiles.
             </p>
+            <!-- Conteneur pour le système solaire 3D -->
             <div class="solar-system-container">
-                <div class="sun"></div>
-                <div class="orbit mercury-orbit">
-                    <div class="planet mercury"></div>
-                </div>
-                <div class="orbit venus-orbit">
-                    <div class="planet venus"></div>
-                </div>
-                <div class="orbit earth-orbit">
-                    <div class="planet earth"></div>
-                </div>
-                <div class="orbit mars-orbit">
-                    <div class="planet mars"></div>
-                </div>
-                <div class="orbit jupiter-orbit">
-                    <div class="planet jupiter"></div>
-                </div>
-                <div class="orbit saturn-orbit">
-                    <div class="planet saturn">
-                        <div class="saturn-ring"></div>
-                    </div>
-                </div>
-                <div class="orbit uranus-orbit">
-                    <div class="planet uranus"></div>
-                </div>
-                <div class="orbit neptune-orbit">
-                    <div class="planet neptune"></div>
-                </div>
+                <canvas id="solarSystemCanvas"></canvas>
             </div>
         </div>
     </section>
@@ -80,7 +59,7 @@
             <div class="planets-grid">
                 <div class="planet-card" data-planet="mercure">
                     <div class="planet-image">
-                        <img src="images/mercury.jpg" alt="Mercure">
+                        <div class="planet-3d-container" id="mercure-3d"></div>
                     </div>
                     <h3>Mercure</h3>
                     <button class="details-btn">Voir détails</button>
@@ -88,7 +67,7 @@
                 
                 <div class="planet-card" data-planet="venus">
                     <div class="planet-image">
-                        <img src="images/venus.jpg" alt="Vénus">
+                        <div class="planet-3d-container" id="venus-3d"></div>
                     </div>
                     <h3>Vénus</h3>
                     <button class="details-btn">Voir détails</button>
@@ -96,7 +75,7 @@
                 
                 <div class="planet-card" data-planet="terre">
                     <div class="planet-image">
-                        <img src="images/earth.jpg" alt="Terre">
+                        <div class="planet-3d-container" id="terre-3d"></div>
                     </div>
                     <h3>Terre</h3>
                     <button class="details-btn">Voir détails</button>
@@ -104,7 +83,7 @@
                 
                 <div class="planet-card" data-planet="mars">
                     <div class="planet-image">
-                        <img src="images/mars.jpg" alt="Mars">
+                        <div class="planet-3d-container" id="mars-3d"></div>
                     </div>
                     <h3>Mars</h3>
                     <button class="details-btn">Voir détails</button>
@@ -112,7 +91,7 @@
                 
                 <div class="planet-card" data-planet="jupiter">
                     <div class="planet-image">
-                        <img src="images/jupiter.jpg" alt="Jupiter">
+                        <div class="planet-3d-container" id="jupiter-3d"></div>
                     </div>
                     <h3>Jupiter</h3>
                     <button class="details-btn">Voir détails</button>
@@ -120,7 +99,7 @@
                 
                 <div class="planet-card" data-planet="saturne">
                     <div class="planet-image">
-                        <img src="images/saturn.jpg" alt="Saturne">
+                        <div class="planet-3d-container" id="saturne-3d"></div>
                     </div>
                     <h3>Saturne</h3>
                     <button class="details-btn">Voir détails</button>
@@ -128,7 +107,7 @@
                 
                 <div class="planet-card" data-planet="uranus">
                     <div class="planet-image">
-                        <img src="images/uranus.jpg" alt="Uranus">
+                        <div class="planet-3d-container" id="uranus-3d"></div>
                     </div>
                     <h3>Uranus</h3>
                     <button class="details-btn">Voir détails</button>
@@ -136,7 +115,7 @@
                 
                 <div class="planet-card" data-planet="neptune">
                     <div class="planet-image">
-                        <img src="images/neptune.jpg" alt="Neptune">
+                        <div class="planet-3d-container" id="neptune-3d"></div>
                     </div>
                     <h3>Neptune</h3>
                     <button class="details-btn">Voir détails</button>
@@ -149,7 +128,7 @@
                 <span class="close-modal">&times;</span>
                 <div class="planet-details">
                     <div class="planet-image-large">
-                        <img id="modalPlanetImage" src="" alt="">
+                        <div class="planet-3d-modal" id="modal-planet-3d"></div>
                     </div>
                     <div class="planet-info">
                         <h2 id="modalPlanetName"></h2>
