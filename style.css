@@ -352,32 +352,48 @@ nav ul li a:hover::after {
     left: 50%;
     width: 80px;
     height: 80px;
-    background: radial-gradient(circle, #ff9500, #ff5e00);
+    background: radial-gradient(circle, #ffdb4d, #ff9500, #ff5e00);
     border-radius: 50%;
-    box-shadow: 0 0 50px #ff9500, 0 0 100px #ff5e00;
+    box-shadow: 0 0 60px #ff9500, 0 0 120px #ff5e00, 0 0 180px rgba(255, 149, 0, 0.4);
     transform: translate(-50%, -50%);
     z-index: 10;
+    animation: sunPulse 4s ease-in-out infinite;
+}
+
+@keyframes sunPulse {
+    0%, 100% {
+        box-shadow: 0 0 60px #ff9500, 0 0 120px #ff5e00, 0 0 180px rgba(255, 149, 0, 0.4);
+        transform: translate(-50%, -50%) scale(1);
+    }
+    50% {
+        box-shadow: 0 0 80px #ff9500, 0 0 150px #ff5e00, 0 0 220px rgba(255, 149, 0, 0.5);
+        transform: translate(-50%, -50%) scale(1.05);
+    }
 }
 
 .orbit {
     position: absolute;
     top: 50%;
     left: 50%;
-    border: 1px solid var(--orbit-color);
+    border: 2px solid var(--orbit-color);
     border-radius: 50%;
     transform: translate(-50%, -50%);
+    box-shadow: inset 0 0 20px rgba(138, 43, 226, 0.1), 0 0 20px rgba(65, 105, 225, 0.05);
 }
 
 .planet {
     position: absolute;
     border-radius: 50%;
     transform-origin: 50% 50%;
-    transition: all 0.2s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3), inset -2px -2px 8px rgba(0, 0, 0, 0.5);
 }
 
 .planet:hover {
-    transform: scale(1.3);
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+    transform: scale(1.5);
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.9), 0 0 50px rgba(138, 43, 226, 0.5);
+    filter: brightness(1.2);
+    cursor: pointer;
 }
 
 /* Définition des orbites et planètes */
@@ -390,7 +406,7 @@ nav ul li a:hover::after {
 .mercury {
     width: 10px;
     height: 10px;
-    background: #b6b6b6;
+    background: radial-gradient(circle at 30% 30%, #d4d4d4, #8c8c8c);
     top: 50%;
     right: 10px;
     margin-top: -5px;
@@ -405,7 +421,7 @@ nav ul li a:hover::after {
 .venus {
     width: 15px;
     height: 15px;
-    background: #ffcc8f;
+    background: radial-gradient(circle at 30% 30%, #ffd9a8, #e6a96b);
     top: 50%;
     right: 10px;
     margin-top: -7.5px;
@@ -420,7 +436,7 @@ nav ul li a:hover::after {
 .earth {
     width: 16px;
     height: 16px;
-    background: #57abf2;
+    background: radial-gradient(circle at 30% 30%, #7ec8ff, #2e7ab8, #1a4d7a);
     top: 50%;
     right: 10px;
     margin-top: -8px;
@@ -435,7 +451,7 @@ nav ul li a:hover::after {
 .mars {
     width: 14px;
     height: 14px;
-    background: #ff6b6b;
+    background: radial-gradient(circle at 30% 30%, #ff8585, #d45050, #a03030);
     top: 50%;
     right: 10px;
     margin-top: -7px;
@@ -450,7 +466,7 @@ nav ul li a:hover::after {
 .jupiter {
     width: 40px;
     height: 40px;
-    background: linear-gradient(#e0ae6f, #d8ca9d, #e0ae6f);
+    background: radial-gradient(circle at 30% 30%, #f0c080, #d8b090, #c89860);
     top: 50%;
     right: 10px;
     margin-top: -20px;
@@ -465,7 +481,7 @@ nav ul li a:hover::after {
 .saturn {
     width: 35px;
     height: 35px;
-    background: #f4dc9f;
+    background: radial-gradient(circle at 30% 30%, #ffe8b8, #f4dc9f, #d4bc7f);
     top: 50%;
     right: 10px;
     margin-top: -17.5px;
@@ -476,11 +492,12 @@ nav ul li a:hover::after {
     position: absolute;
     width: 60px;
     height: 10px;
-    background: rgba(244, 220, 159, 0.6);
+    background: linear-gradient(90deg, transparent, rgba(244, 220, 159, 0.8), transparent);
     border-radius: 50%;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) rotateX(75deg);
+    box-shadow: 0 0 10px rgba(244, 220, 159, 0.5);
 }
 
 .uranus-orbit {
@@ -492,7 +509,7 @@ nav ul li a:hover::after {
 .uranus {
     width: 25px;
     height: 25px;
-    background: #c6edf7;
+    background: radial-gradient(circle at 30% 30%, #dff6fc, #b8e5f0, #8dcfe0);
     top: 50%;
     right: 10px;
     margin-top: -12.5px;
@@ -507,7 +524,7 @@ nav ul li a:hover::after {
 .neptune {
     width: 25px;
     height: 25px;
-    background: #5cb8ff;
+    background: radial-gradient(circle at 30% 30%, #7ac8ff, #4a9fe8, #2d7bc8);
     top: 50%;
     right: 10px;
     margin-top: -12.5px;
@@ -532,11 +549,13 @@ nav ul li a:hover::after {
 
 .planet-card {
     background: var(--card-bg);
-    border-radius: 15px;
+    border-radius: 20px;
     overflow: hidden;
-    transition: all 0.3s ease;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3), 0 5px 15px rgba(138, 43, 226, 0.1);
     animation: fadeInUp 0.8s backwards;
+    border: 1px solid rgba(138, 43, 226, 0.2);
+    position: relative;
 }
 
 .planet-card:nth-child(2) { animation-delay: 0.1s; }
@@ -548,16 +567,35 @@ nav ul li a:hover::after {
 .planet-card:nth-child(8) { animation-delay: 0.7s; }
 
 .planet-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 40px rgba(138, 43, 226, 0.3);
+    transform: translateY(-15px) scale(1.02);
+    box-shadow: 0 20px 60px rgba(138, 43, 226, 0.5), 0 10px 30px rgba(65, 105, 225, 0.3);
+    border-color: rgba(138, 43, 226, 0.6);
+}
+
+.planet-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(138, 43, 226, 0.1), transparent);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.planet-card:hover::before {
+    opacity: 1;
 }
 
 .planet-image {
     width: 100%;
-    height: 180px;
+    height: 200px;
     overflow: hidden;
     position: relative;
-    background-color: rgba(30, 30, 70, 0.3);
+    background: linear-gradient(135deg, rgba(30, 30, 70, 0.5), rgba(10, 10, 40, 0.8));
     display: flex;
     align-items: center;
     justify-content: center;
@@ -567,40 +605,85 @@ nav ul li a:hover::after {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.5s ease;
-    border-radius: 8px 8px 0 0;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     z-index: 1;
+    filter: brightness(0.95) contrast(1.05);
+}
+
+.planet-image::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.15), transparent 60%);
+    z-index: 2;
+    pointer-events: none;
 }
 
 .planet-card:hover .planet-image img {
-    transform: scale(1.1);
+    transform: scale(1.15) rotate(2deg);
+    filter: brightness(1.05) contrast(1.1);
 }
 
 .planet-card h3 {
-    padding: 15px 20px 10px;
+    padding: 20px 20px 10px;
     font-size: 1.5rem;
     text-align: center;
     color: var(--text-color);
+    position: relative;
+    z-index: 2;
+    background: linear-gradient(90deg, #fff, #e0e0e0);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-weight: 600;
 }
 
 .details-btn {
     display: block;
     width: 80%;
     margin: 0 auto 20px;
-    padding: 10px;
+    padding: 12px 20px;
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     border: none;
     border-radius: 30px;
     color: white;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+}
+
+.details-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
 }
 
 .details-btn:hover {
-    transform: scale(1.05);
-    box-shadow: 0 5px 15px rgba(138, 43, 226, 0.4);
+    transform: scale(1.08) translateY(-2px);
+    box-shadow: 0 8px 25px rgba(138, 43, 226, 0.6), 0 4px 12px rgba(65, 105, 225, 0.4);
+}
+
+.details-btn:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.details-btn:active {
+    transform: scale(1.02);
 }
 
 /* Modal pour les détails des planètes */

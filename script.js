@@ -1,25 +1,13 @@
-// URLs d'images pour les planètes (utilisant des sources d'images fiables)
+// URLs d'images pour les planètes (utilisant Wikimedia Commons - sources fiables)
 const planetImages = {
-    mercure: "https://solarsystem.nasa.gov/system/stellar_items/image_files/2_feature_1600x900_mercury.jpg",
-    venus: "https://solarsystem.nasa.gov/system/stellar_items/image_files/3_feature_1600x900_venus.jpg",
-    terre: "https://solarsystem.nasa.gov/system/stellar_items/image_files/4_feature_1600x900_earth.jpg",
-    mars: "https://solarsystem.nasa.gov/system/stellar_items/image_files/6_mars_carousel_3.jpg",
-    jupiter: "https://solarsystem.nasa.gov/system/stellar_items/image_files/7_feature_1600x900_jupiter_juno5.jpg",
-    saturne: "https://solarsystem.nasa.gov/system/stellar_items/image_files/38_saturn_carousel_2.jpg",
-    uranus: "https://solarsystem.nasa.gov/system/stellar_items/image_files/69_uranus_carousel_1.jpg",
-    neptune: "https://solarsystem.nasa.gov/system/stellar_items/image_files/90_carousel_neptune_1.jpg"
-};
-
-// Images alternatives au cas où les premières ne chargent pas
-const fallbackPlanetImages = {
-    mercure: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Mercury_in_color_-_Prockter07-edit1.jpg/800px-Mercury_in_color_-_Prockter07-edit1.jpg",
-    venus: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Venus-real_color.jpg/800px-Venus-real_color.jpg",
-    terre: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/The_Blue_Marble_%28remastered%29.jpg/800px-The_Blue_Marble_%28remastered%29.jpg",
-    mars: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Mars_-_August_30_2021_-_Flickr_-_Kevin_M._Gill.png/800px-Mars_-_August_30_2021_-_Flickr_-_Kevin_M._Gill.png",
-    jupiter: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Jupiter_and_its_shrunken_Great_Red_Spot.jpg/800px-Jupiter_and_its_shrunken_Great_Red_Spot.jpg",
-    saturne: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Saturn_during_Equinox.jpg/800px-Saturn_during_Equinox.jpg",
-    uranus: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Uranus2.jpg/800px-Uranus2.jpg",
-    neptune: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Neptune_Full.jpg/800px-Neptune_Full.jpg"
+    mercure: "https://upload.wikimedia.org/wikipedia/commons/d/d9/Mercury_in_color_-_Prockter07-edit1.jpg",
+    venus: "https://upload.wikimedia.org/wikipedia/commons/e/e5/Venus-real_color.jpg",
+    terre: "https://upload.wikimedia.org/wikipedia/commons/9/97/The_Earth_seen_from_Apollo_17.jpg",
+    mars: "https://upload.wikimedia.org/wikipedia/commons/0/02/OSIRIS_Mars_true_color.jpg",
+    jupiter: "https://upload.wikimedia.org/wikipedia/commons/2/2b/Jupiter_and_its_shrunken_Great_Red_Spot.jpg",
+    saturne: "https://upload.wikimedia.org/wikipedia/commons/c/c7/Saturn_during_Equinox.jpg",
+    uranus: "https://upload.wikimedia.org/wikipedia/commons/3/3d/Uranus2.jpg",
+    neptune: "https://upload.wikimedia.org/wikipedia/commons/5/56/Neptune_Full.jpg"
 };
 
 // Image de fond pour l'en-tête
@@ -185,24 +173,13 @@ document.addEventListener('DOMContentLoaded', function() {
     const modalPlanetTemp = document.getElementById('modalPlanetTemp');
     const modalPlanetDesc = document.getElementById('modalPlanetDesc');
     
-    // Amélioration de la gestion d'erreur pour les images avec fallback
+    // Gestion d'erreur pour les images
     function handleImageError(img, planetKey) {
-        // Vérifier si l'image est déjà celle de secours pour éviter une boucle
-        if (img.src.includes(fallbackPlanetImages[planetKey])) {
-            // Dernier recours - couleur de fond avec texte
-            const parent = img.parentElement;
-            if (parent) {
-                parent.innerHTML = `<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(45deg, #0a0a30, #2a2a60);color:white;font-weight:bold;text-align:center;padding:10px;">${planetData[planetKey].name}</div>`;
-            }
-            return;
-        }
-        
-        // Si l'image actuelle est l'image principale, essayer l'image de secours
-        if (img.src.includes(planetImages[planetKey])) {
-            img.src = fallbackPlanetImages[planetKey];
-        } else {
-            // Sinon, essayer l'image principale
-            img.src = planetImages[planetKey];
+        console.error(`Failed to load image for ${planetKey}`);
+        // Afficher un placeholder avec le nom de la planète
+        const parent = img.parentElement;
+        if (parent) {
+            parent.innerHTML = `<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(45deg, #0a0a30, #2a2a60);color:white;font-weight:bold;text-align:center;padding:10px;">${planetData[planetKey].name}</div>`;
         }
     }
     
